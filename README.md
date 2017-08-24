@@ -25,7 +25,7 @@ We add corner, margin, border and color:
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        ....
 
         Glide.with(this).load("http://scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageView);
         Glide.with(this).load("http://scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin, sColor, sBorder))).into(mImageViewBorder);
