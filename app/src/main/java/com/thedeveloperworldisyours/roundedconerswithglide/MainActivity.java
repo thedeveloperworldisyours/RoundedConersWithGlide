@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     public static int sCorner = 15;
-    public static int sMargin = 2;
+    public static int sMargin = 20;
 
     public static int sBorder = 10;
     public static String sColor = "#7D9067";
