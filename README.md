@@ -7,6 +7,31 @@ Rounded Coners With Glide
  <img src="https://github.com/thedeveloperworldisyours/RoundedConersWithGlide/blob/master/RoundedConersWithGlideV4.png" width="300px" />
 </p>
 
+# How to use
+
+We add corner, margin, border and color:
+
+```java
+public static int sCorner = 15;
+    public static int sMargin = 2;
+
+    public static int sBorder = 10;
+    public static String sColor = "#7D9067";
+```
+   We add the constructor with or without border:
+```java
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
+        Glide.with(this).load("http://scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageView);
+        Glide.with(this).load("http://scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin, sColor, sBorder))).into(mImageViewBorder);
+    }
+```
+
 Also visit my blog: **[The developer world is yours](http://thedeveloperworldisyours.com/)**
 
 <a href="http://thedeveloperworldisyours.com/">
