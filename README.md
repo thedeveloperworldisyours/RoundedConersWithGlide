@@ -9,7 +9,7 @@ Rounded Coners With Glide
 
 # How to use
 
-We add corner, margin, border and color:
+Now We can specify corner, margin ,border color and border margin:
 
 ```java
     public static int sCorner = 15;
