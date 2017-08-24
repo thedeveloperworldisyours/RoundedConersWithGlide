@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
@@ -27,7 +28,7 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
         TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT,
         TOP, BOTTOM, LEFT, RIGHT,
         OTHER_TOP_LEFT, OTHER_TOP_RIGHT, OTHER_BOTTOM_LEFT, OTHER_BOTTOM_RIGHT,
-        DIAGONAL_FROM_TOP_LEFT, DIAGONAL_FROM_TOP_RIGHT
+        DIAGONAL_FROM_TOP_LEFT, DIAGONAL_FROM_TOP_RIGHT, BORDER
     }
 
     private BitmapPool mBitmapPool;
@@ -35,9 +36,17 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
     private int mDiameter;
     private int mMargin;
     private CornerType mCornerType;
+    private String mColor;
+    private int mBorder;
 
     public RoundedCornersTransformation(Context context, int radius, int margin) {
         this(context, radius, margin, CornerType.ALL);
+    }
+
+    public RoundedCornersTransformation(Context context, int radius, int margin, String color, int border) {
+        this(context, radius, margin, CornerType.BORDER);
+        mColor = color;
+        mBorder = border;
     }
 
     public RoundedCornersTransformation(BitmapPool pool, int radius, int margin) {
@@ -59,7 +68,7 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
     }
 
     @Override
-    public Resource<Bitmap> transform(Context context,Resource<Bitmap> resource, int outWidth, int outHeight) {
+    public Resource<Bitmap> transform(Context context, Resource<Bitmap> resource, int outWidth, int outHeight) {
         Bitmap source = resource.get();
 
         int width = source.getWidth();
@@ -127,6 +136,9 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
                 break;
             case DIAGONAL_FROM_TOP_RIGHT:
                 drawDiagonalFromTopRightRoundRect(canvas, paint, right, bottom);
+                break;
+            case BORDER:
+                drawBorder(canvas, paint, right, bottom);
                 break;
             default:
                 canvas.drawRoundRect(new RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint);
@@ -238,6 +250,26 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
         canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom - mRadius), paint);
         canvas.drawRect(new RectF(mMargin + mRadius, mMargin + mRadius, right, bottom), paint);
     }
+
+    private void drawBorder(Canvas canvas, Paint paint, float right,
+                            float bottom) {
+
+        // stroke
+        Paint strokePaint = new Paint();
+        strokePaint.setStyle(Paint.Style.STROKE);
+        if (mColor != null) {
+            strokePaint.setColor(Color.parseColor(mColor));
+        } else {
+            strokePaint.setColor(Color.BLACK);
+        }
+        strokePaint.setStrokeWidth(mBorder);
+
+        canvas.drawRoundRect(new RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint);
+
+        // stroke
+        canvas.drawRoundRect(new RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, strokePaint);
+    }
+
 
     @Override
     public void updateDiskCacheKey(MessageDigest messageDigest) {
