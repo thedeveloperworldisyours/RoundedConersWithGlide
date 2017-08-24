@@ -27,10 +27,12 @@ We add corner, margin, border and color:
 
         ....
 
+        // Rounded corners
         Glide.with(this).load("http://scareface.jpeg")
         .apply(RequestOptions.bitmapTransform(
         new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageView);
         
+        // Rounded corners with border
         Glide.with(this).load("http://scareface.jpeg")
         .apply(RequestOptions.bitmapTransform(
         new RoundedCornersTransformation(this, sCorner, sMargin, sColor, sBorder))).into(mImageViewBorder);
