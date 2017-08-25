@@ -13,11 +13,13 @@ Now We can specify corner, margin ,border color and border margin:
 
 ```java
     public static int sCorner = 15;
-    public static int sMargin = 2;
+    public static int sMargin = 20;
 
     public static int sBorder = 10;
     public static String sColor = "#7D9067";
 ```
+   Note: sMargin should be more or same than sBorder
+
    We add the constructor with or without border:
 ```java
     @Override
