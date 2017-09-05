@@ -13,9 +13,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     public static int sCorner = 15;
-    public static int sMargin = 20;
+    public static int sMargin = 15;
 
-    public static int sBorder = 10;
+    public static int sBorder = 15;
     public static String sColor = "#7D9067";
 
     @BindView(R.id.imageView)
@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.imageViewBorder)
     ImageView mImageViewBorder;
+
+    @BindView(R.id.imageViewBorderResizing)
+    ImageView mImageViewBorderResizing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Glide.with(this).load("http://thedeveloperworldisyours.com/wp-content/uploads/scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageView);
-        Glide.with(this).load("http://thedeveloperworldisyours.com/wp-content/uploads/scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin, sColor, sBorder))).into(mImageViewBorder);
+        Glide.with(this).load("http://thedeveloperworldisyours.com/wp-content/uploads/scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sColor, sBorder))).into(mImageViewBorder);
+        Glide.with(this).load("http://thedeveloperworldisyours.com/wp-content/uploads/scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageViewBorderResizing);
+
     }
 }

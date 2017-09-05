@@ -43,8 +43,8 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
         this(context, radius, margin, CornerType.ALL);
     }
 
-    public RoundedCornersTransformation(Context context, int radius, int margin, String color, int border) {
-        this(context, radius, margin, CornerType.BORDER);
+    public RoundedCornersTransformation(Context context, int radius, String color, int border) {
+        this(context, radius, 0, CornerType.BORDER);
         mColor = color;
         mBorder = border;
     }
@@ -138,6 +138,8 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
                 drawDiagonalFromTopRightRoundRect(canvas, paint, right, bottom);
                 break;
             case BORDER:
+                right = width - mBorder;
+                bottom = height - mBorder;
                 drawBorder(canvas, paint, right, bottom);
                 break;
             default:
@@ -264,10 +266,10 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
         }
         strokePaint.setStrokeWidth(mBorder);
 
-        canvas.drawRoundRect(new RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint);
+        canvas.drawRoundRect(new RectF(mBorder, mBorder, right, bottom), mRadius, mRadius, paint);
 
         // stroke
-        canvas.drawRoundRect(new RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, strokePaint);
+        canvas.drawRoundRect(new RectF(mBorder , mBorder, right, bottom), mRadius, mRadius, strokePaint);
     }
 
 
