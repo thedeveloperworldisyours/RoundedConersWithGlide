@@ -4,7 +4,7 @@ Rounded Coners With Glide
 **[You'll find the supporting medium article for this project here!](http://thedeveloperworldisyours.com/android/rounded-corners-with-glide/#sthash.EiFePDrI.dpbs)**
 
 <p align="center">
- <img src="https://github.com/thedeveloperworldisyours/RoundedConersWithGlide/blob/master/RoundedConersWithGlideV4.png" width="300px" />
+ <img src="https://github.com/thedeveloperworldisyours/RoundedConersWithGlide/blob/master/RoundedConersWithGlideV4.png" width="600px" />
 </p>
 
 # How to use
@@ -37,7 +37,13 @@ Now We can specify corner, margin ,border color and border margin:
         // Rounded corners with border
         Glide.with(this).load("http://scareface.jpeg")
         .apply(RequestOptions.bitmapTransform(
-        new RoundedCornersTransformation(this, sCorner, sMargin, sColor, sBorder))).into(mImageViewBorder);
+        new RoundedCornersTransformation(this, sCorner, sColor, sBorder))).into(mImageViewBorder);
+        
+        // Rounded corners with border xml
+        Glide.with(this).load("http://scareface.jpeg")
+        .apply(RequestOptions.bitmapTransform(
+        new RoundedCornersTransformation(this, sCorner, sMargin)))
+        .into(mImageViewBorderResizing);
     }
 ```
 
