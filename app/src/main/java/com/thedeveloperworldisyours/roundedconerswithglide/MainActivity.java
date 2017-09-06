@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public static int sCorner = 15;
     public static int sMargin = 15;
 
-    public static int sBorder = 15;
+    public static int sBorder = 10;
     public static String sColor = "#7D9067";
 
     @BindView(R.id.imageView)
