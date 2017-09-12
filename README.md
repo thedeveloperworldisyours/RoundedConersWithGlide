@@ -39,13 +39,55 @@ Now We can specify corner, margin ,border color and border margin:
         .apply(RequestOptions.bitmapTransform(
         new RoundedCornersTransformation(this, sCorner, sColor, sBorder))).into(mImageViewBorder);
         
-        // Rounded corners with border xml
-        Glide.with(this).load("http://scareface.jpeg")
-        .apply(RequestOptions.bitmapTransform(
-        new RoundedCornersTransformation(this, sCorner, sMargin)))
-        .into(mImageViewBorderResizing);
     }
 ```
+*Rounded corners with border xml
+
+In drawable folder We add this frame.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="15dp"
+        android:color="#7D9067" />
+
+    <corners android:radius="5dp" />
+</shape>
+```
+In your layout, two elements:
+
+```
+<RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+        app:layout_constraintRight_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <ImageView
+            android:id="@+id/imageViewBorderResizing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher" />
+</RelativeLayout>
+```
+
+In your Activity or fragment you can this parametres
+
+```
+public static int sCorner = 15;
+public static int sMargin = 0;
+```
+with this constructor:
+```
+Glide.with(this).load("http://thedeveloperworldisyours.com/wp-content/uploads/scareface.jpeg").apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, sCorner, sMargin))).into(mImageViewBorderResizing);
+```
+
 
 Also visit my blog: **[The developer world is yours](http://thedeveloperworldisyours.com/)**
 
