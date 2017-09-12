@@ -57,7 +57,7 @@ In drawable folder We add this frame.
     <corners android:radius="5dp" />
 </shape>
 ```
-In your layout, two elements:
+In our layout, two elements:
 
 ```
 <RelativeLayout
@@ -77,7 +77,7 @@ In your layout, two elements:
 </RelativeLayout>
 ```
 
-In your Activity or fragment you can this parametres
+In our Activity or fragment We can this parametres
 
 ```
 public static int sCorner = 15;
