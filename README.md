@@ -1,7 +1,7 @@
 # RoundedConersWithGlide
 Rounded Coners With Glide
 
-**[You'll find the supporting medium article for this project here!](http://thedeveloperworldisyours.com/android/rounded-corners-with-glide/#sthash.EiFePDrI.dpbs)**
+**[You'll find the supporting article for this project here!](http://thedeveloperworldisyours.com/android/rounded-corners-with-glide/#sthash.EiFePDrI.dpbs)**
 
 <p align="center">
  <img src="https://github.com/thedeveloperworldisyours/RoundedConersWithGlide/blob/master/RoundedConersWithGlideV4.png" width="600px" />
